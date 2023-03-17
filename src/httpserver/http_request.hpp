@@ -248,6 +248,8 @@ class http_request {
      **/
      uint16_t get_requestor_port() const;
 
+     const MHD_ConnectionInfo* get_connection() ;
+
      bool check_digest_auth(const std::string& realm, const std::string& password, int nonce_timeout, bool* reload_nonce) const;
 
      friend std::ostream &operator<< (std::ostream &os, http_request &r);
