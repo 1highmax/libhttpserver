@@ -285,9 +285,9 @@ uint16_t http_request::get_requestor_port() const {
     return http::get_port(conninfo->client_addr);
 }
 
-const MHD_ConnectionInfo* http_request::get_connection() {
+MHD_ConnectionInfo http_request::get_connection() const {
     const MHD_ConnectionInfo* conninfo = MHD_get_connection_info(underlying_connection, MHD_CONNECTION_INFO_CLIENT_ADDRESS);
-    return conninfo;
+    return *conninfo;
 }
 
 std::ostream &operator<< (std::ostream &os, const http_request &r) {
